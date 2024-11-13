@@ -15,12 +15,12 @@ Veri ön işleme aşamasında eksik veriler tamamlanmış; zaman serisi verisi y
 * **Jupyter Notebook:** Veri ön işleme, veri analizi ve görselleştirme için geliştirme ortamı
 
 ## Kurulum
-Projeyi klonlayın ve gerekli bağımlılıkları yükleyin:
+* Projeyi klonlayın:
 
 ```
 git clone https://github.com/miraygurbuz/Time-Series-Box-Office.git
 ```
-
+* Gereksinimleri yükleyin:
 ```
 pip install -r requirements.txt
 ```
@@ -36,7 +36,7 @@ pip install -r requirements.txt
   
 > 🔔 **Not:** 🔔 Sürücüyü `driver` klasörüne ekledikten sonra `scraper` klasörü içindeki `settings.py` dosyasının `DRIVER_PATH` kısmını güncelleyerek sürücü yolunu (driver/chromedriver gibi) belirtin.
 
-* `scraper.py` dosyasını çalıştırın
+* `scraper.py` dosyasını çalıştırın:
 ```
 python scraper/scraper.py
 ```
