@@ -42,6 +42,16 @@ python scraper/scraper.py
 ```
 
 ### 2. Veri Ön İşleme
+
+#### Uygulanan Adımlar:
+* Eksik Verilerin Doldurulması
+* Zaman Değişkenlerinin Eklenmesi
+* Zaman Serisinin Yeniden Örneklenmesi
+* Zaman Serisinin Trend ve Mevsimsellik Bileşenlerine Ayrıştırılması
+* Otokorelasyon
+* Özellik Mühendisliği
+* Verilerin Görselleştirilmesi
+  
 Veri ön işleme adımlarını Jupyter Notebook veya Python scripti kullanarak gerçekleştirebilirsiniz:
 * Jupyter Notebook ile:
 ```
@@ -49,10 +59,10 @@ jupyter notebook data_preprocessing/data_preprocessing.ipynb
 ```
 * Python scripti ile:
 ```
-python data_preprocessing/data_preprocessing.py
+python data_preprocessing/main.py
 ```
 
-## Veri Keşfi ve Görselleştirme
+## Verilerin Görselleştirmesi
 ### Aylık ve Çeyreklik Mevsimsellik Grafikleri
 <img src="https://github.com/user-attachments/assets/9ca5c8a6-d4d4-48c8-b71c-8690dd6568b5" width="800" height="auto" />
 
