@@ -1,4 +1,4 @@
-# 🎞️ Gişe Verilerine Göre Hasılat Tahmini: Veri Toplama ve Veri Ön İşleme Uygulamaları 🎞️ 
+# 🎞️ Gişe Verilerine Göre Hasılat Tahmini 🎞️ 
 
 ## Proje Hakkında
 2009 – 2024 yılları arasındaki günlük gişe verileri Box Office Mojo web sitesinden toplanmıştır. Veri toplama süreci Python programlama dili kullanılarak; Selenium, BeautifulSoup4 ve Requests kütüphaneleri ile gerçekleştirilmiştir.
