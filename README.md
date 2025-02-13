@@ -1,81 +1,84 @@
-# 🎞️ Gişe Verilerine Göre Hasılat Tahmini 🎞️
+[![en](https://img.shields.io/badge/lang-en-blue.svg)](https://github.com/miraygurbuz/Time-Series-Box-Office/blob/main/README.md)
+[![tr](https://img.shields.io/badge/lang-tr-red.svg)](https://github.com/miraygurbuz/Time-Series-Box-Office/blob/main/README.tr.md)
+# 🎬 Box Office Gross Revenue Forecasting Based on Daily Data
+This project aims to forecast daily box office gross revenue using Transformer-based models.
+## Project Overview
+Daily box office data was scraped from the [Box Office Mojo](https://www.boxofficemojo.com/date/) website using Python. The data scraping process utilized the Selenium, BeautifulSoup4, and Requests libraries. Handling missing data, decomposition into trend and seasonality components, autocorrelation analysis, and feature engineering steps were applied to the scraped data.
 
-## Proje Hakkında
-Günlük gişe verileri, Box Office Mojo web sitesinden Python kullanılarak toplanmıştır. Veri toplama sürecinde Selenium, BeautifulSoup4 ve Requests kütüphaneleri kullanılmıştır. Toplanan veriler üzerinde eksik verilerin tamamlanması, trend ve mevsimsellik bileşenlerine ayrıştırma, otokorelasyon analizi ve özellik mühendisliği adımları uygulanmıştır. Projenin ikinci kısmında, Transformer tabanlı modeller kullanılarak gişe hasılat tahmini gerçekleştirilmiştir.
+In the second phase of the project, Transformer-based models were used to forecast box office gross revenue.
+### Models Used:
+* Autoformer
+* TFT (Temporal Fusion Transformer)
+* Informer
+* FEDformer
+* VanillaTransformer
 
-Kullanılan modeller:
-- Autoformer
-- TFT (Temporal Fusion Transformer)
-- Informer
-- FEDformer
-- VanillaTransformer
+### Libraries Used: 
+* Selenium, BeautifulSoup4, Requests
+* Statsmodels
+* NeuralForecast
 
-## Kullanılan Kütüphaneler
-- Selenium, BeautifulSoup4, Requests
-- Statsmodels
-- NeuralForecast
-
-## Kurulum
-* Projeyi klonlayın:
-
+## Setup
+* Clone the project:
 ```
 git clone https://github.com/miraygurbuz/Time-Series-Box-Office.git
 ```
-* Gereksinimleri yükleyin:
+* Install the dependencies:
 ```
 pip install -r requirements.txt
 ```
-
-## Kullanım
-### 1. Veri Kazıma
-
-* Çalışmakta olduğunuz tarayıcıya uygun sürücüyü `driver` klasöre eklemeniz gerekmektedir.
-
-   * **Chrome için:** chromedriver dosyasını indirin ve `driver` klasörüne yerleştirin.
-
-   * **Firefox için:** geckodriver dosyasını indirin ve  `driver` klasörüne yerleştirin.
+## Usage
+### 1. Data Scraping
+* You need to add the appropriate driver for your browser into the `driver` folder.
   
-> 🔔 **Not:** Sürücüyü `driver` klasörüne ekledikten sonra `scraper` klasörü içindeki `settings.py` dosyasının `DRIVER_PATH` kısmını güncelleyerek sürücü yolunu belirtin.
+   * **For Chrome:** Download the `chromedriver` file and place it in the `driver` folder.
+   * **For Firefox:** Download the `geckodriver` file and place it in the `driver` folder.
+     
+> ❗**Note:** After adding the driver to the folder, update the `DRIVER_PATH` section in the `scraper/settings.py` file to specify the driver path.
 
-* `scraper.py` dosyasını çalıştırın:
+* Run the scraper:
 ```
 python scraper/scraper.py
 ```
-
-### 2. Veri Ön İşleme
-
-#### Uygulanan Adımlar:
-* Eksik Verilerin Doldurulması
-* Zaman Değişkenlerinin Eklenmesi
-* Zaman Serisinin Yeniden Örneklenmesi
-* Zaman Serisinin Trend ve Mevsimsellik Bileşenlerine Ayrıştırılması
-* Otokorelasyon Analizi
-* Özellik Mühendisliği
-  
-Veri ön işleme adımlarını Jupyter Notebook veya Python scripti kullanarak gerçekleştirebilirsiniz:
-* Jupyter Notebook ile:
+### 2. Data Preprocessing
+#### The following steps were applied:
+* Handling Missing Data
+* Adding Time Variables
+* Resampling the Time Series
+* Decomposition of Time Series into Trend and Seasonality Components
+* Autocorrelation Analysis
+* Feature Engineering
+    
+You can perform the data preprocessing steps either via Jupyter Notebook or Python script:
+* Using Jupyter Notebook:
 ```
 jupyter notebook data_preprocessing/data_preprocessing.ipynb
 ```
-* Python scripti ile:
+* Using Python script:
 ```
 python data_preprocessing/main.py
 ```
+### 3. Transformer-Based Models
+Google Colab was used for training and evaluating Transformer-based models. The detailed model training process can be accessed via the following Google Colab link:
 
-### 3. Transformer Tabanlı Tahmin Modelleri
-Transformer tabanlı modellerin eğitimi ve değerlendirilmesi Google Colab ortamında gerçekleştirilmiştir. 
-  
-Detaylı model eğitim sürecine erişmek için Google Colab bağlantısını kullanabilirsiniz: [![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/gist/miraygurbuz/e26773471c3ba83e45a00a9cef97f7b5/transformers.ipynb)
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/gist/miraygurbuz/e26773471c3ba83e45a00a9cef97f7b5/transformers.ipynb)
+## Results
+### Error Metrics Comparison
 
-## Sonuçlar 
-### Model Performans Karşılaştırma Metrikleri
-
-| Model               | MAPE    | MAE (milyon) | MSE (trilyon) | RMSE (milyon) | R-squared  |
+| Model               | MAPE (%)| MAE (million) | MSE (trillion) | RMSE (million) | R-squared (%)|
 |---------------------|---------|--------------|---------------|---------------|------------|
-| Autoformer          | %10,80 | 1,30         | 3,03          | 1,74          | %99,29     |
-| TFT                 | %2,59  | 0,64         | 0,86          | 0,93          | %99,80     |
-| Informer            | %4,05  | 0,60         | 0,58          | 0,76          | %99,73     |
-| FEDformer           | %8,74  | 1,11         | 2,11          | 1,45          | %99,51     |
-| VanillaTransformer  | %3,03  | 0,44         | 0,30          | 0,55          | %99,93     |
+| Autoformer          | 10.80 | 1.30         | 3.03          | 1.74          | 99.29     |
+| TFT                 | 2.59  | 0.64         | 0.86          | 0.93          | 99.80     |
+| Informer            | 4.05  | 0.60         | 0.58          | 0.76          | 99.73     |
+| FEDformer           | 8.74  | 1.11         | 2.11          | 1.45          | 99.51     |
+| VanillaTransformer  | 3.03  | 0.44         | 0.30          | 0.55          | 99.93     |
 
-Model performans karşılaştırma metrikleri incelendiğinde, VanillaTransformer modelinin %3,03 MAPE ve 0,44 milyon MAE ile gişe hasılatı tahmininde en başarılı model olduğu görülmektedir. TFT ve Informer modelleri de oldukça yakın performans sergilemiştir. Autoformer modeli ise diğer modellerden düşük performans göstermiştir. Genel başarı sıralaması VanillaTransformer > Informer ≥ TFT > FEDformer > Autoformer şeklindedir.
+By examining the error metrics, it is evident that the VanillaTransformer model is the most accurate. It has the lowest MAPE and MAE values, indicating both a lower error rate and more stable forecasts, and its lower RMSE compared to other models suggests that it produces more consistent forecasts.
+
+The TFT and Informer models also exhibited very close performance to each other, performing better than Autoformer and FEDformer but slightly behind VanillaTransformer.
+
+The Autoformer model showed relatively lower performance compared to the others.
+
+**Overall Performance Ranking:**
+
+VanillaTransformer > Informer ≥ TFT > FEDformer > Autoformer
